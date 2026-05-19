@@ -1,0 +1,23 @@
+<%# locals: (bookmarks: [Bookmark.new]) %>
+<h1>Bookmarks</h1>
+
+<p><a href="/bookmarks/new">+ New bookmark</a></p>
+
+<% if bookmarks.length == 0 %>
+  <p><em>No bookmarks yet.</em></p>
+<% else %>
+  <ul>
+    <% bookmarks.each do |b| %>
+      <li>
+        <a href="<%= b.url %>"><%= b.title.length == 0 ? b.url : b.title %></a>
+        &middot;
+        <a href="/bookmarks/<%= b.id %>">view</a>
+        <a href="/bookmarks/<%= b.id %>/edit">edit</a>
+        <form action="/bookmarks/<%= b.id %>" method="post" style="display:inline">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit">delete</button>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

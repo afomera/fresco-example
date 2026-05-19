@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fresco App</title>
+    <style>
+      body {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        color: #222;
+      }
+      header nav a { color: #0066cc; text-decoration: none; margin-right: 1rem; }
+      header nav a:hover { text-decoration: underline; }
+      code { background: #f3f3f3; padding: 0.1rem 0.3rem; border-radius: 3px; }
+      footer { color: #888; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: 2rem; padding-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav><a href="/">home</a></nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer><small>Powered by Spinel + Fresco.</small></footer>
+  </body>
+</html>

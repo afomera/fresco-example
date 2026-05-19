@@ -1,0 +1,35 @@
+<%# locals: (visits: "", last_ack: "") %>
+<h1>Filters demo</h1>
+
+<p>
+  This action wires up <code>before_action</code>, <code>after_action</code>,
+  and a <code>handle</code>/<code>super</code> "around" filter on
+  <code>Fresco::Action</code>.
+</p>
+
+<dl>
+  <dt><strong>before_action</strong></dt>
+  <dd>Increments a session-tracked visit counter on every request.
+      Visits so far: <code><%= visits %></code>.</dd>
+
+  <dt><strong>after_action</strong></dt>
+  <dd>Stamps <code>filter_last_ack</code> in the session with the
+      visit count it just saw. Because <em>after_action</em> runs after
+      the response body is built, the value below is the count from
+      your <em>previous</em> visit — refresh and it'll catch up.
+      Last ack: <code><%= last_ack %></code>.</dd>
+
+  <dt><strong>around (handle + super)</strong></dt>
+  <dd>Measures elapsed micros for the whole pipeline and logs it to
+      the server stdout. Check your <code>bin/dev</code> terminal for
+      a <code>[filters] /filters took …us</code> line.</dd>
+</dl>
+
+<h2>Try the halt</h2>
+<p>
+  <a href="/filters?halt=1">Hit /filters?halt=1</a> — <code>before_action</code>
+  will <code>halt!</code> with a flash redirect back to <code>/filters</code>
+  without ever running <code>#call</code> or <code>#after_action</code>.
+  (The visit counter still ticks up, since <em>before_action</em>
+  increments it before the halt check.)
+</p>

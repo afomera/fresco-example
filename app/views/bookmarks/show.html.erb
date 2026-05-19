@@ -1,0 +1,24 @@
+<%# locals: (bookmark: Bookmark.new) %>
+<% if bookmark.found? %>
+  <h1><%= bookmark.title.length == 0 ? bookmark.url : bookmark.title %></h1>
+
+  <p><strong>URL:</strong> <a href="<%= bookmark.url %>"><%= bookmark.url %></a></p>
+  <% if bookmark.title.length > 0 %>
+    <p><strong>Title:</strong> <%= bookmark.title %></p>
+  <% end %>
+  <p><small>created_at: <%= bookmark.created_at %></small></p>
+
+  <p>
+    <a href="/bookmarks/<%= bookmark.id %>/edit">Edit</a>
+    &middot;
+    <a href="/bookmarks">Back to list</a>
+  </p>
+
+  <form action="/bookmarks/<%= bookmark.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete this bookmark</button>
+  </form>
+<% else %>
+  <h1>Bookmark not found</h1>
+  <p><a href="/bookmarks">Back to list</a></p>
+<% end %>

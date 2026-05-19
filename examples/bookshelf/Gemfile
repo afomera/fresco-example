@@ -1,0 +1,18 @@
+source "https://gem.coop"
+
+gem "fresco", source: "https://rubygems.org"
+
+group :development do
+  # Lints user code against the Spinel-acceptable Ruby subset.
+  # `fresco build` runs this and fails the build on violations.
+  gem "rubocop_spinel"
+
+  # Powers `fresco dev`'s CRuby stand-in for the SQLite FFI shim.
+  # Production binaries link libsqlite3 directly via the gem-shipped
+  # sqlite.c — this is a dev-only convenience so actions that hit
+  # Fresco::Db::Active work under CRuby without a Spinel recompile.
+  gem "sqlite3"
+
+  # Uncomment if you switch the adapter in config/database.rb.
+  # gem "pg"
+end

@@ -1,0 +1,24 @@
+<%# locals: (bookmark: Bookmark.new) %>
+<% if bookmark.found? %>
+  <h1>Edit Bookmark</h1>
+
+  <form action="/bookmarks/<%= bookmark.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <p>
+      <label for="url">URL</label><br>
+      <input id="url" name="url" type="text" value="<%= bookmark.url %>" autofocus>
+    </p>
+    <p>
+      <label for="title">Title</label><br>
+      <input id="title" name="title" type="text" value="<%= bookmark.title %>">
+    </p>
+    <p>
+      <button type="submit">Save changes</button>
+      &middot;
+      <a href="/bookmarks/<%= bookmark.id %>">Cancel</a>
+    </p>
+  </form>
+<% else %>
+  <h1>Bookmark not found</h1>
+  <p><a href="/bookmarks">Back to list</a></p>
+<% end %>

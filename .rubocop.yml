@@ -1,0 +1,22 @@
+# Fresco: rubocop config. Runs ONLY the Spinel-subset cops — no
+# stylistic noise. bin/build invokes this against app/ (covers
+# app/action.rb + app/actions/ + anything else under app/ that
+# Spinel will eventually compile).
+
+plugins:
+  - rubocop_spinel
+
+AllCops:
+  NewCops: disable
+  DisabledByDefault: true
+  TargetRubyVersion: 3.3
+  Exclude:
+    - "app/generated/**/*"
+    - "bin/build"
+    - "bin/dev"
+
+Spinel/Unsupported:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  Enabled: true

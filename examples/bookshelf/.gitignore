@@ -1,0 +1,6 @@
+/build/
+/generated/
+/vendor/spinel/
+*.env
+!.env.sample
+/db/app.sqlite3

@@ -1,0 +1,10 @@
+/build/
+/generated/
+*.env
+!.env.sample
+
+# Ignore my misc stuff
+scraps/
+
+# ignore my spinel binary
+spinel

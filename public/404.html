@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>404 — Not Found</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      // Pre-paint so the page doesn't flash light before JS runs. If
+      // the user has no stored preference we seed from the OS, then
+      // persist so subsequent visits skip the matchMedia probe.
+      (function () {
+        var t = localStorage.getItem("theme");
+        if (!t) {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+          localStorage.setItem("theme", t);
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <style>
+      :root {
+        --bg: #fff; --fg: #222; --muted: #888;
+        --border: #eee; --code-bg: #f7f7f7;
+        --accent: #0066cc; --status: #888;
+      }
+      :root[data-theme="dark"] {
+        --bg: #141414; --fg: #e8e8e8; --muted: #9a9a9a;
+        --border: #2a2a2a; --code-bg: #1f1f1f;
+        --accent: #6ab0ff; --status: #b8b8b8;
+      }
+      body {
+        font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        max-width: 40rem;
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+        background: var(--bg);
+        color: var(--fg);
+        transition: background 0.15s, color 0.15s;
+      }
+      h1 { font-weight: 700; font-size: 1.5rem; margin-bottom: 0.25rem; }
+      .status { color: var(--status); font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; }
+      p { line-height: 1.5; }
+      code { background: var(--code-bg); padding: 0.1rem 0.3rem; border-radius: 3px; }
+      a { color: var(--accent); }
+      a:hover { text-decoration: underline; }
+      hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+      footer { color: var(--muted); font-size: 0.85rem; }
+      #theme-toggle {
+        position: fixed; top: 1rem; right: 1rem;
+        background: transparent; border: 1px solid var(--border);
+        color: var(--fg); border-radius: 6px;
+        padding: 0.4rem; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      #theme-toggle:hover { background: var(--code-bg); }
+      #theme-toggle svg { width: 18px; height: 18px; display: none; }
+      :root[data-theme="light"] #theme-toggle .icon-moon { display: inline-block; }
+      :root[data-theme="dark"]  #theme-toggle .icon-sun  { display: inline-block; }
+    </style>
+  </head>
+  <body>
+    <button id="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="status">404 &middot; Not Found</div>
+    <h1>That page isn't here.</h1>
+    <p>The URL you requested didn't match any route, or the file you asked for doesn't exist under <code>public/</code>.</p>
+    <p><a href="/">Back to home</a></p>
+    <hr>
+    <footer>Powered by Spinel + Fresco.</footer>
+
+    <script>
+      (function () {
+        document.getElementById("theme-toggle").addEventListener("click", function () {
+          var cur = document.documentElement.getAttribute("data-theme");
+          var nxt = cur === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", nxt);
+          localStorage.setItem("theme", nxt);
+        });
+      })();
+    </script>
+  </body>
+</html>

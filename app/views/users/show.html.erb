@@ -1,0 +1,12 @@
+<%# locals: (id: "") %>
+<h1>User <%= id %></h1>
+
+<% if id == "42" %>
+  <p>Hey there, the answer to the Ultimate Question of Life, The Universe, and Everything is 42!</p>
+<% end %>
+
+<p>Rendered by a Herb-compiled template inside the application layout.</p>
+
+<%= render partial: "user_card", locals: { name: "Ada Lovelace", age: 36 } %>
+<%= render partial: "footer_note", locals: { msg: "rendered from a root-level partial" } %>
+<%= render partial: "shared/badge", locals: { label: "explicit path" } %>
