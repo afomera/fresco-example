@@ -41,7 +41,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.3.0)
-    fresco (0.0.1)
+    fresco (0.0.2)
       base64
       herb
     herb (0.10.1)
@@ -59,7 +59,7 @@ DEPENDENCIES
 CHECKSUMS
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
-  fresco (0.0.1) sha256=92538c813e0aa9bd7ba4cd388ac8361b0632c09db7c84b3200022dc37f07d03f
+  fresco (0.0.2) sha256=aa0a455eef4537b6f0f4394412e19ed254e4ea8c1f6c713415df0dbf09c8e5c1
   herb (0.10.1) sha256=e7b64076e275a2e97fc5dd5e8ab9ad1bd55840871395ea8d3e481de73a82d32f
   herb (0.10.1-arm64-darwin) sha256=08d0434ae94d23a7353d767085dc974cc5e63943a07cd48bc99afd7fea919c1b
   json (2.19.5) sha256=218a18553e4801d579ca7e0f5bc72bafd776d7397238a1fb4e74db5b0a812c59
